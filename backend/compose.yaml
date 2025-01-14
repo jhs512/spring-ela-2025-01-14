@@ -3,11 +3,8 @@ services:
     image: elasticsearch:8.12.2
     environment:
       - discovery.type=single-node
-      - xpack.security.enabled=false
+      - ELASTIC_PASSWORD=yourpassword    # 관리자 비밀번호 설정
+      - xpack.security.enabled=true      # 보안 기능 활성화
+      - xpack.security.http.ssl.enabled=false  # SSL 비활성화
     ports:
       - "9200:9200"
-    networks:
-      - elastic
-
-networks:
-  elastic:
